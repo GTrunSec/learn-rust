@@ -3,9 +3,8 @@ languageCode = "en-us"
 title = "My Roadmap to Learning Rust"
 theme = "cortex"
 [params]
-email = "jethrokuan95@gmail.com"
+email = "gtrunsec@hardenedlinux.org"
 footer = "Icon by Freepik. Built with ♥ with Org-mode and Hugo."
-
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]

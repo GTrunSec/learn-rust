@@ -36,6 +36,7 @@ jobs:
           sudo apt-get install tree
           tree
           hugo --minify
+          cp -rf ./public/posts/index.html ./public/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
