@@ -1,0 +1,41 @@
+name: Docs
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          submodules: true
+      - run: git clone https://github.com/GTrunSec/braindump-org-source --depth=1 braindump
+      - run: |
+          mkdir -p content/posts
+          cp environment.org org/.
+          rm -rf braindump/programming/rust
+
+      - name: Setup emacs
+        # uses: purcell/setup-emacs@master
+        # with:
+        #   version: 27.2
+        uses: docker://silex/emacs:27.2-alpine
+        if: github.event.deleted == false
+        with:
+          args: sh ./nix/gen.sh
+      - run : |
+          cp -r org/content/posts docs
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

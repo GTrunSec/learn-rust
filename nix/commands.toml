@@ -1,0 +1,12 @@
+[[commands]]
+name = "test"
+category = "learning"
+command = "cargo"
+help = "clone 30days"
+
+
+[[commands]]
+name = "async"
+category = "publish"
+command = "lsyncd -rsync ~/Dropbox/org-notes/braindump/programming/rust $DIR/org"
+help = "clone 30days"

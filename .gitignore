@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+*.log
+tmp/
+*.ninja_log
+content
+site
+.orgids

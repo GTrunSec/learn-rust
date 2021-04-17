@@ -1,0 +1,31 @@
+#+TITLE: Setup Environment
+#+HUGO_BASE_DIR: .
+* Installing Nix
+
+#+begin_src sh
+sh <(curl -L https://nixos.org/nix/install) --daemon
+#+end_src
+
+** Switching the Nix on Flake feature
+
+
+#+begin_src elisp
+nix-env -iA nixpkgs.nixUnstable
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+sudo pkill nix-daemon
+#+end_src
+
+* Setting up Rust develop environment
+1. Nightly version
+   a. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/nightly/default.nix][rustOverlay-NightlyCheck]]
+   b. Example: `default = pkgs.rust-bin.nightly."2021-03-23";`
+   c. located `nix/rust.nix` modify the `2021-01-14`to which your wanti
+
+2. stable version
+   a. c. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/stable/default.nix][rustOverlay-StableCheck]]
+   b. example : `default = pkgs.rust-bin.stable."1.50.0";`
+
+3. beta version
+   a.
+   b. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/beta/default.nix][rustOverlay-StableCheck]]
+   c. example : `default = pkgs.rust-bin.beta."2021-03-06";`
