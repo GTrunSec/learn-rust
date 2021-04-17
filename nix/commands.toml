@@ -3,10 +3,13 @@ name = "test"
 category = "learning"
 command = "cargo"
 help = "clone 30days"
-
-
 [[commands]]
 name = "async"
 category = "publish"
 command = "lsyncd -rsync ~/Dropbox/org-notes/braindump/programming/rust $DIR/org"
 help = "clone 30days"
+[[commands]]
+name = "rsync"
+category = "publis"
+command = "rsync -az ~/Dropbox/org-notes/braindump/nix/guangtao_nix.org $DIR/org/guangtao_nix.org"
+help = "rsync"
