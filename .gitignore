@@ -6,3 +6,5 @@ tmp/
 content
 site
 .orgids
+build.ninja
+public
