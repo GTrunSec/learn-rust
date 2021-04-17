@@ -1,6 +1,6 @@
 baseURL = "https://gtrunsec.github.io/learning-rust-roadmap"
 languageCode = "en-us"
-title = "My Roadmap to Learning Rust
+title = "My Roadmap to Learning Rust"
 theme = "cortex"
 [params]
 email = "jethrokuan95@gmail.com"
@@ -33,4 +33,4 @@ footer = "Icon by Freepik. Built with ♥ with Org-mode and Hugo."
     lineNumbersInTable = true
     noClasses = true
     style = "friendly"
-    tabWidth = 4"
+    tabWidth = "4"
