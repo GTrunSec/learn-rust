@@ -15,7 +15,6 @@ jobs:
       - run: |
           mkdir -p content/posts
           cp environment.org org/.
-          rm -rf braindump/programming/rust
 
       - name: Setup emacs
         # uses: purcell/setup-emacs@master
