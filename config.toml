@@ -1,6 +1,6 @@
 baseURL = "https://gtrunsec.github.io/learning-rust-roadmap"
 languageCode = "en-us"
-title = "My Roadmap to Learning Rust"
+title = "Guangtao's Roadmap to Learn Rust -> 2021"
 theme = "cortex"
 [params]
 email = "gtrunsec@hardenedlinux.org"
