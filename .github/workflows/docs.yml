@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2.3.4
         with:
           submodules: true
-      - run: git clone https://github.com/GTrunSec/braindump-org-source --depth=1 braindump
+      - run: git clone https://github.com/GTrunSec/braindump-org-source --depth=1 --recursive braindump
       - run: |
           mkdir -p content/posts
           cp environment.org org/.
