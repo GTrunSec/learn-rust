@@ -8,3 +8,6 @@ site
 .orgids
 build.ninja
 public
+
+
+rust-30days

@@ -29,3 +29,23 @@ sudo pkill nix-daemon
    a.
    b. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/beta/default.nix][rustOverlay-StableCheck]]
    c. example : `default = pkgs.rust-bin.beta."2021-03-06";`
+
+* Clone Repo
+
+** Rust Code 30 days
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/Code42Cate/30-Days-of-Code.git rust-30days/code43-30days
+#+end_src
+
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/kiskoza/30days-of-rust.git rust-30days/kiskoz-30days
+#+end_src
+
+#+RESULTS:
+
+#+begin_src emacs-lisp :tangle yes
+
+#+end_src
+#+RESULTS:

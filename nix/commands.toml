@@ -11,5 +11,13 @@ help = "clone 30days"
 [[commands]]
 name = "rsync"
 category = "publis"
-command = "rsync -az ~/Dropbox/org-notes/braindump/nix/guangtao_nix.org $DIR/org/guangtao_nix.org"
+command = '''
+        rsync -az ~/Dropbox/org-notes/braindump/nix/guangtao_nix.org $DIR/org/guangtao_nix.org
+        '''
 help = "rsync"
+
+[[commands]]
+name = "pet-owner"
+category = "snippet"
+command = "pet --config $DIR/pet/config.toml search"
+help = ""

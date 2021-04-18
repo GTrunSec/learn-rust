@@ -1,0 +1,4 @@
+[[snippets]]
+  description = "shadowsocks lib"
+  command = "ss-local -c ~/.config/ss/config.json"
+  output = "sdsd"
