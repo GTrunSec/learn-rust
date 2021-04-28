@@ -43,9 +43,6 @@
 
           python-packages-custom = machLib.mkPython rec {
             requirements = ''
-              mkdocs-awesome-pages-plugin
-              mkdocs-material
-              setuptools
             '';
           };
 
@@ -75,11 +72,6 @@
         })
     ) //
     {
-      overlay = final: prev: {
-        rust-set = final.rust-bin.nightly.latest;
-        rust-final = final.rust-bin.nightly.latest.default.override {
-          extensions = [ "rust-src" ];
-        };
-      };
+      overlay = final: prev: { };
     };
 }

@@ -1,23 +1,21 @@
 [[commands]]
-name = "test"
-category = "learning"
-command = "cargo"
-help = "clone 30days"
-[[commands]]
-name = "async"
-category = "publish"
-command = "lsyncd -rsync ~/Dropbox/org-notes/braindump/programming/rust $DIR/org"
-help = "clone 30days"
-[[commands]]
-name = "rsync"
-category = "publis"
-command = '''
-        rsync -az ~/Dropbox/org-notes/braindump/nix/guangtao_nix.org $DIR/org/guangtao_nix.org
-        '''
-help = "rsync"
+name = "cb"
+category = "cargo"
+command = "cargo build"
+help = "cargo build"
 
 [[commands]]
-name = "pet-owner"
-category = "snippet"
-command = "pet --config $DIR/pet/config.toml search"
-help = ""
+name = "cr"
+category = "cargo"
+command = "cargo run"
+help = "cargo run"
+
+[[commands]]
+name = "async"
+category = "data"
+command = "lsyncd -rsync ~/Dropbox/org-notes/braindump/programming/rust $DIR/org"
+help = "docs"
+
+[[env]]
+name = "RUST_BACKTRACE"
+value = "1"
