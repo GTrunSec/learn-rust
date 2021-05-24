@@ -33,7 +33,7 @@
           };
         in
         rec {
-          python-packages-custom = machlib.mkPython rec {
+          python-packages-custom = machlib.mkPython {
             requirements = ''
                 '';
           };
@@ -50,15 +50,14 @@
               (devshell.importTOML ./nix/commands.toml)
             ];
             packages = [
-              python-packages-custom
+              python-packages-custom #comment
               nixpkgs-fmt
             ];
             env = [
               {
                 name = " DIR ";
                 prefix = ''
-                    $( cd "$
-                  (dirname "$\{\BASH_SOURCE [ 0 ]}") "; pwd )
+                  $( cd "$(dirname "$\{\BASH_SOURCE [ 0 ]}")"; pwd )
                 '';
               }
             ];
