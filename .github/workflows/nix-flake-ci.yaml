@@ -12,20 +12,19 @@ jobs:
       with:
         fetch-depth: 0
 
+    - uses: cachix/install-nix-action@v13
+      with:
+        install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210429_d15a196/install
+        extra_nix_config: |
+          experimental-features = nix-command flakes
+          system-features = nixos-test benchmark big-parallel kvm recursive-nix
+
     - uses: actions/cache@v2.1.5
       with:
         path: |
           path: /nix/store
-        key: ${{ matrix.os }}-nix-store-${{ hashFiles('**/flake.lock') }}
+        key: ${{ matrix.os }}-nix-store
 
-
-    - uses: cachix/install-nix-action@v13
-      with:
-        install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210429_d15a196/install
-
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-          system-features = nixos-test benchmark big-parallel kvm recursive-nix
 
     # CI workflows
     - name: Nix Format Check
