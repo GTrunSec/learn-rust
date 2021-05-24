@@ -28,10 +28,10 @@ jobs:
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
 
     # CI workflows
+    - name: Nix Format Check
+      run: nix -Lv develop -c nixpkgs-fmt --check .
     - name: Do not check python
       run: |
         sed -i 's| python-packages-custom #comment|\#python-packages-custom #comment|' flake.nix
-    - name: Nix Format Check
-      run: nix -Lv develop -c nixpkgs-fmt --check .
     - name: Nix Flake Check
       run: nix -Lv flake check
