@@ -10,12 +10,6 @@ category = "cargo"
 command = "cargo run"
 help = "cargo run"
 
-[[commands]]
-name = "async"
-category = "data"
-command = "lsyncd -rsync ~/Dropbox/org-notes/braindump/programming/rust $DIR/org"
-help = "docs"
-
 [[env]]
 name = "RUST_BACKTRACE"
 value = "1"
