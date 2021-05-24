@@ -16,14 +16,7 @@
     (flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ]
       (system:
         let
-          machLib = import mach-nix
-            {
-              # pypiDataRev = pypi-deps-db.rev;
-              # pypiDataSha256 = pypi-deps-db.narHash;
-              python = "python38";
-              inherit pkgs;
-            };
-
+          machlib = mach-nix.lib.${system};
           unstable = final: prev: {
             inherit ((import inputs.master) { inherit system; })
               ;
@@ -40,10 +33,9 @@
           };
         in
         rec {
-
-          python-packages-custom = machLib.mkPython rec {
+          python-packages-custom = machlib.mkPython rec {
             requirements = ''
-            '';
+                '';
           };
 
           packages = {
@@ -59,12 +51,14 @@
             ];
             packages = [
               python-packages-custom
+              nixpkgs-fmt
             ];
             env = [
               {
-                name = "DIR";
+                name = " DIR ";
                 prefix = ''
-                  $( cd "$(dirname "$\{\BASH_SOURCE [ 0 ]}")"; pwd )
+                    $( cd "$
+                  (dirname "$\{\BASH_SOURCE [ 0 ]}") "; pwd )
                 '';
               }
             ];
