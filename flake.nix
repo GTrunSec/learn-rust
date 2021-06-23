@@ -3,37 +3,42 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nixpkgs.url = "nixpkgs/7d71001b796340b219d1bfa8552c81995017544a";
+    nixpkgs.url = "nixpkgs/release-21.05";
+    master.url = "nixpkgs/nixos-unstable";
     flake-compat = { url = "github:edolstra/flake-compat"; flake = false; };
     rust-overlay = { url = "github:oxalica/rust-overlay"; inputs.nixpkgs.follows = "nixpkgs"; };
     devshell-flake.url = "github:numtide/devshell";
-    mach-nix = { url = "github:DavHau/mach-nix"; inputs.nixpkgs.follows = "nixpkgs"; };
+    mach-nix = { url = "github:DavHau/mach-nix"; inputs.nixpkgs.follows = "nixpkgs"; inputs.pypi-deps-db.follows = "pypi-deps-db"; };
+    pypi-deps-db = {
+      url = "github:DavHau/pypi-deps-db";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, flake-utils, flake-compat, rust-overlay, devshell-flake, mach-nix }:
+  outputs = inputs@{ self, nixpkgs, master, pypi-deps-db, flake-utils, flake-compat, rust-overlay, devshell-flake, mach-nix }:
     { }
     //
     (flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ]
       (system:
         let
-          machlib = mach-nix.lib.${system};
           unstable = final: prev: {
-            inherit ((import inputs.master) { inherit system; })
+            inherit ((import master) { inherit system; })
               ;
           };
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
               self.overlay
-              (import rust-overlay)
+              rust-overlay.overlay
               devshell-flake.overlay
-              #unstable
+              unstable
             ];
             config = { };
           };
         in
         rec {
-          python-packages-custom = machlib.mkPython {
+          python-packages-custom = pkgs.machlib.mkPython {
+            ignoreDataOutdated = true;
             requirements = ''
                 '';
           };
@@ -58,6 +63,8 @@
         })
     ) //
     {
-      overlay = final: prev: { };
+      overlay = final: prev: {
+        machlib = mach-nix.lib.${final.system};
+      };
     };
 }
