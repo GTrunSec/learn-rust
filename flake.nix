@@ -52,7 +52,7 @@
           devShell = with pkgs; devshell.mkShell {
             imports = [
               ./nix/rust.nix
-              (devshell.importTOML ./nix/commands.toml)
+              (devshell.importTOML ./nix/devshell.toml)
             ];
             packages = [
               python-packages-custom #comment
