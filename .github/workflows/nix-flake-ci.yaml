@@ -19,7 +19,7 @@ jobs:
           experimental-features = nix-command flakes
           system-features = nixos-test benchmark big-parallel kvm recursive-nix
 
-    - uses: actions/cache@v2.1.6
+    - uses: actions/cache@v2.1.7
       with:
         path: |
           path: /nix/store
