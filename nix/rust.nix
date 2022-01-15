@@ -7,7 +7,7 @@ with pkgs;
 with lib;
 {
   options.language.rust = {
-    rustOverlay = mkOption {
+    rust-bin = mkOption {
       type = types.attrs;
       default = pkgs.rust-bin.nightly."${date}";
       description = "Which nightly rust version to use
@@ -22,8 +22,7 @@ with lib;
 
     rustPackagesSet = mkOption {
       type = types.listOf types.str;
-      default = [
-      ];
+      default = [ ];
       description = "Which rust tools to pull from the nixpkgs channel package set
       search valid packages here https://search.nixos.org/packages?channel=unstable&";
     };
@@ -31,8 +30,6 @@ with lib;
     rustOverlaySet = mkOption {
       type = types.listOf types.str;
       default = [
-        "default"
-        "rust-analysis"
         "rust-analyzer-preview"
       ];
       description = "Which rust tools to pull from the rust overlay
@@ -41,21 +38,13 @@ with lib;
   };
 
   config = {
-    env = [{
-      # Used by tools like rust-analyzer
-      name = "RUST_SRC_PATH";
-      value =
-        let rust-src = rust-bin.nightly."${date}".default.override {
-          extensions = [ "rust-src" ];
-        };
-        in
-        (toString rust-src) + "/lib/rustlib/src/rust/library";
-    }];
-
     devshell.packages = map (tool: cfg.rustPackages.${tool}) cfg.rustPackagesSet
-      ++ map (tool: cfg.rustOverlay.${tool}) cfg.rustOverlaySet ++ (with pkgs;[
+      ++ map (tool: cfg.rust-bin.${tool}) cfg.rustOverlaySet ++ (with pkgs;[
       #custom nixpkgs packages
-      rustracer
+      (cfg.rust-bin.default.override
+        {
+          extensions = [ "rust-src" ];
+        })
     ]);
   };
 }

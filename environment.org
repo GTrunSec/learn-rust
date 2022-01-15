@@ -1,5 +1,4 @@
 #+TITLE: Setup Environment
-#+SETUPFILE: ./hugo.setup
 * Installing Nix
 
 #+begin_src sh

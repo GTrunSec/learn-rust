@@ -9,5 +9,6 @@ site
 build.ninja
 public
 
-
+target
 rust-30days
+programming-rustv2-book
