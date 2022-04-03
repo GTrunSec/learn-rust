@@ -1,32 +1,31 @@
 {
   description = "Rust development environment";
-  nixConfig = {
-    flake-registry = "https://github.com/hardenedlinux/flake-registry/raw/main/flake-registry.json";
-  };
-
   inputs = {
-    flake-compat.flake = false;
+    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    master.url = "github:NixOS/nixpkgs/master";
+    flake-compat = {url = "github:edolstra/flake-compat"; flake = false; };
     rust-overlay = { url = "github:oxalica/rust-overlay"; inputs.nixpkgs.follows = "nixpkgs"; };
-    devshell.url = "github:numtide/devshell";
+    devshell = { url = "github:numtide/devshell"; inputs.nixpkgs.follows = "nixpkgs";};
   };
 
-  outputs = inputs@{ self, nixpkgs, unstable, flake-utils, flake-compat, rust-overlay, devshell }:
+  outputs = inputs@{ self, nixpkgs, master, ...}:
     { }
     //
-    (flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ]
+    (inputs.flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ]
       (system:
         let
-          unstable = final: prev: {
-            inherit ((import unstable) { inherit system; })
+          overrideMaster = final: prev: {
+            inherit (master.legacyPackages.${system})
               ;
           };
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
               self.overlay
-              rust-overlay.overlay
-              devshell.overlay
-              unstable
+              inputs.rust-overlay.overlay
+              inputs.devshell.overlay
+              overrideMaster
             ];
             config = { };
           };
@@ -36,16 +35,7 @@
             inherit (pkgs.rust-bin.nightly.latest)
               default;
           };
-          devShell = with pkgs; pkgs.devshell.mkShell {
-            imports = [
-              ./nix/rust.nix
-              (pkgs.devshell.importTOML ./nix/devshell.toml)
-            ];
-            packages = [
-              nixpkgs-fmt
-            ];
-            env = [ ];
-          };
+          devShell = import ./devshell {inherit pkgs inputs;};
         })
     ) //
     {
