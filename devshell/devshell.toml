@@ -13,3 +13,10 @@ help = "cargo run"
 [[env]]
 name = "RUST_BACKTRACE"
 value = "1"
+
+
+[[commands]]
+name = "lint"
+category = "linter"
+command = "cargo clippy -- -D warnings"
+help = "linting"

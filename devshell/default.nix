@@ -1,10 +1,10 @@
-{ pkgs, inputs, }:
-
-pkgs.devshell.mkShell {
-  imports = [
-    ./rust.nix
-    (pkgs.devshell.importTOML ./devshell.toml)
-  ];
-  packages = [];
-  env = [ ];
+{pkgs}: {
+  default = with pkgs;
+    devshell.mkShell {
+      imports = [
+        ./rust.nix
+        (devshell.importTOML ./commands.toml)
+      ];
+      packages = [];
+    };
 }
