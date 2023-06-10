@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["srcs/html2md-example"]
+members = ["srcs/html2md-example", "srcs/cli-test"]
 
 [workspace.package]
 version = "0.0.0"
