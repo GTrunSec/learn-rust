@@ -1,0 +1,25 @@
+[[commands]]
+name = "cb"
+category = "cargo"
+command = "cargo build"
+help = "cargo build"
+
+[[commands]]
+name = "cr"
+category = "cargo"
+command = "cargo run"
+help = "cargo run"
+
+[[env]]
+name = "RUST_BACKTRACE"
+value = "1"
+
+[[commands]]
+name = "lint"
+category = "linter"
+command = "cargo clippy -- -D warnings"
+help = "linting"
+
+[[env]]
+name = "RUST_BACKTRACE"
+value = "1"

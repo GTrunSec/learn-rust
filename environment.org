@@ -1,0 +1,56 @@
+#+TITLE: Setup Environment
+* Installing Nix
+
+#+begin_src sh
+sh <(curl -L https://nixos.org/nix/install) --daemon
+#+end_src
+
+** Switching the Nix on Flake feature
+
+#+begin_src bash
+echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
+# sudo pkill nix-daemon
+#+end_src
+
+
+* Entering the devShell Environment
+
+#+begin_src bash
+nix develop ./nix
+# or with direnv
+direnv allow
+#+end_src
+
+* Setting up Rust develop environment
+1. Nightly version
+   a. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/nightly/default.nix][rustOverlay-NightlyCheck]]
+   b. Example: `default = pkgs.rust-bin.nightly."2021-03-23";`
+   c. located `nix/rust.nix` modify the `2021-01-14`to which your wanti
+
+2. stable version
+   a. c. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/stable/default.nix][rustOverlay-StableCheck]]
+   b. example : `default = pkgs.rust-bin.stable."1.50.0";`
+
+3. beta version
+   a.
+   b. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/beta/default.nix][rustOverlay-StableCheck]]
+   c. example : `default = pkgs.rust-bin.beta."2021-03-06";`
+
+* Clone Repo
+
+** Co Rust
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/CreatorsDAO/rust-co-learn learn/rust-co-learn
+#+end_src
+
+** Rust Code 30 days
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/Code42Cate/30-Days-of-Code.git learn/code43-30days
+#+end_src
+
+
+#+begin_src sh :async t :exports both :results output
+git clone https://github.com/kiskoza/30days-of-rust.git learn/kiskoz-30days
+#+end_src

@@ -1,0 +1,25 @@
+.DS_Store
+.idea
+*.log
+tmp/
+*.ninja_log
+content
+site
+.orgids
+build.ninja
+public
+
+target
+rust-30days
+programming-rustv2-book
+
+# nixago: ignore-linked-files
+/lefthook.yml
+/.editorconfig
+/.conform.yaml
+/treefmt.toml
+
+# Added by cargo
+
+/target
+/.data
