@@ -384,11 +384,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1686270755,
-        "narHash": "sha256-mQJS9VQWt2KlFqNG/jjTdP495LBy0js9ZRM68Qjykmg=",
+        "lastModified": 1686406443,
+        "narHash": "sha256-iLA45UBOZS8SEFzG0zksm2Tcy3wO76J/EPFmYKlKjyU=",
         "owner": "serokell",
         "repo": "nixfmt",
-        "rev": "4a745fcf46b0561eca8f914403c32e740d53e26e",
+        "rev": "ee44d77b79f87c8aee33366c613ca3835a135d9e",
         "type": "github"
       },
       "original": {

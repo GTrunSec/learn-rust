@@ -9,7 +9,10 @@ let
   rust-bin = pkgs.rustEnv;
 in
 {
-  packages = [ pkgs.pkg-config ];
+  packages = [
+    pkgs.pkg-config
+    pkgs.rustup
+  ];
   # imports = [
   #   "${modulePath}/extra/language/rust.nix"
   # ];

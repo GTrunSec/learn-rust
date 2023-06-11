@@ -36,6 +36,16 @@ direnv allow
    b. [[https://github.com/oxalica/rust-overlay/tree/master/manifests/beta/default.nix][rustOverlay-StableCheck]]
    c. example : `default = pkgs.rust-bin.beta."2021-03-06";`
 
+
+* Days
+** day1
+
+#+begin_src sh
+cargo new hello_rust --lib
+#+end_src
+
+#+RESULTS:
+
 * Clone Repo
 
 ** Co Rust
@@ -43,6 +53,8 @@ direnv allow
 #+begin_src sh :async t :exports both :results output
 git clone https://github.com/CreatorsDAO/rust-co-learn learn/rust-co-learn
 #+end_src
+
+#+RESULTS:
 
 ** Rust Code 30 days
 
@@ -54,3 +66,5 @@ git clone https://github.com/Code42Cate/30-Days-of-Code.git learn/code43-30days
 #+begin_src sh :async t :exports both :results output
 git clone https://github.com/kiskoza/30days-of-rust.git learn/kiskoz-30days
 #+end_src
+
+#+RESULTS:
