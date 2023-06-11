@@ -19,4 +19,4 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - name: clippy linting
-        run: nix develop -c lint
+        run: nix develop ./nix -c lint
