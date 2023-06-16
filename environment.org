@@ -51,7 +51,7 @@ cargo new hello_rust --lib
 ** Co Rust
 
 #+begin_src sh :async t :exports both :results output
-git clone https://github.com/CreatorsDAO/rust-co-learn learn/rust-co-learn
+git clone https://github.com/CreatorsDAO/rust-co-learn courses/rust-co-learn
 #+end_src
 
 #+RESULTS:
@@ -64,7 +64,7 @@ git clone https://github.com/Code42Cate/30-Days-of-Code.git learn/code43-30days
 
 
 #+begin_src sh :async t :exports both :results output
-git clone https://github.com/kiskoza/30days-of-rust.git learn/kiskoz-30days
+git clone https://github.com/kiskoza/30days-of-rust.git courses/kiskoz-30days
 #+end_src
 
 #+RESULTS:

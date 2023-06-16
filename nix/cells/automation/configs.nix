@@ -9,7 +9,8 @@
 {
   inputs,
   cell,
-}: {
+}:
+{
   # Tool Homepage: https://editorconfig.org/
   editorconfig = {
     data = {
@@ -60,7 +61,7 @@
         ''
           export NODE_PATH=${inputs.nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules:$NODE_PATH
         ''
-      ;
+    ;
     data = {
       formatter = {
         nix = {

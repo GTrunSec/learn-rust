@@ -15,7 +15,7 @@ in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
   default = lib.dev.mkShell {
-    name = "Rust Development Shell";
+    name = "Rust Development Env";
     _module.args.pkgs = nixpkgs;
     imports = [
       (inputs.local + "/nix/rust.nix")

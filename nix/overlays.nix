@@ -1,6 +1,7 @@
 {
   inputs,
-}: {
+}:
+{
   default =
     final: prev: {
       rustEnv = final.rust-bin.fromRustupToolchainFile ../rust-toolchain.toml;
@@ -8,5 +9,5 @@
       #   extensions = [ "rust-src" ];
       # };
     }
-    ;
+  ;
 }

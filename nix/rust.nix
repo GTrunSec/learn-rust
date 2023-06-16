@@ -27,7 +27,7 @@ in
     text = ''
       # ensure CARGO_HOME is populated
       mkdir -p $PRJ_DATA_DIR/cargo
-      ln -s -t $PRJ_DATA_DIR/cargo $(ls -d ${rust-bin.outPath}/*)
+      ln -sf -t $PRJ_DATA_DIR/cargo $(ls -d ${rust-bin.outPath}/*)
     '';
   };
 

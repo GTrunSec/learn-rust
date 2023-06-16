@@ -2,8 +2,8 @@
   description = "Rust development environment";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
 
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,16 +12,20 @@
     crane.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-filter.url = "github:/numtide/nix-filter";
-    nix-filter.inputs.nixpkgs.follows = "nixpkgs";
+    call-flake.url = "github:divnix/call-flake";
   };
 
   outputs =
     inputs@{
       self,
-      flake-utils,
+      systems,
       ...
     }:
-    (flake-utils.lib.eachDefaultSystem (
+    let
+      local = inputs.call-flake ./nix;
+      eachSystem = inputs.nixpkgs.lib.genAttrs (import systems);
+    in
+    (eachSystem (
       system:
       let
         nixpkgs = inputs.nixpkgs.legacyPackages.${system}.appendOverlays [
@@ -33,9 +37,11 @@
       rec {
         inherit nixpkgs;
         packages = { };
+        devShells.default = local.devShells.${system}.default;
       }
     )) // {
       overlays = import ./nix/overlays.nix { inherit inputs; };
+      inherit (local) __std;
     }
-    ;
+  ;
 }

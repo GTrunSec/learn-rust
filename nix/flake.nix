@@ -1,6 +1,4 @@
 {
-  description = "Flops";
-
   inputs.std.url = "github:divnix/std";
   inputs.nixpkgs.follows = "std/nixpkgs";
   inputs.nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
@@ -28,5 +26,5 @@
           "devshells"
         ];
       }
-    ;
+  ;
 }
