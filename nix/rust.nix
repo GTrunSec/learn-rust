@@ -9,19 +9,17 @@ let
   rust-bin = pkgs.rustEnv;
 in
 {
+  packagesFrom = [ ];
   packages = [
     pkgs.pkg-config
     pkgs.rustup
+    pkgs.clang
   ];
-  # imports = [
-  #   "${modulePath}/extra/language/rust.nix"
-  # ];
   # language.rust = {
   #   packageSet = rust-bin;
   #   enableDefaultToolchain = true;
   #   tools = ["toolchain"]; # fenix collates them all in a convenience derivation
   # };
-
   devshell.startup.link-cargo-home = {
     deps = [ ];
     text = ''
@@ -52,7 +50,14 @@ in
     }
     {
       name = "PKG_CONFIG_PATH";
-      value = lib.makeSearchPath "lib/pkgconfig" [ pkgs.openssl.dev ];
+      value = lib.makeSearchPath "lib/pkgconfig" [
+        pkgs.openssl.dev
+        pkgs.libiconv
+      ];
+    }
+    {
+      name = "LIBRARY_PATH";
+      value = lib.makeLibraryPath [ pkgs.libiconv ];
     }
   ];
   commands =
