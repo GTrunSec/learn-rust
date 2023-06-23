@@ -14,32 +14,30 @@ let
 in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
-  default = lib.dev.mkShell (
-    {
-      modulePath,
-      ...
-    }:
-    {
-      name = "Rust Development Env";
-      _module.args.pkgs = nixpkgs;
-      imports = [
-        # "${inputs.std.inputs.devshell}/extra/language/rust.nix"
-        (inputs.local + "/nix/rust.nix")
-        (std.inputs.devshell.lib.importTOML (inputs.local + "/devshell.toml"))
-      ];
-      # Tool Homepage: https://nix-community.github.io/nixago/
-      # This is Standard's devshell integration.
-      # It runs the startup hook when entering the shell.
-      nixago = [
-        lib.cfg.conform
-        (lib.cfg.treefmt cell.configs.treefmt)
-        (lib.cfg.editorconfig cell.configs.editorconfig)
-        (lib.cfg.githubsettings cell.configs.githubsettings)
-        (lib.cfg.lefthook cell.configs.lefthook)
-      ];
+  default = lib.dev.mkShell {
+    name = "Rust Development Env";
+    _module.args.pkgs = nixpkgs;
+    imports = [
+      # "${inputs.std.inputs.devshell}/extra/language/rust.nix"
+      (inputs.local + "/nix/rust.nix")
+      (std.inputs.devshell.lib.importTOML (inputs.local + "/devshell.toml"))
+      inputs.std.std.devshellProfiles.default
+    ];
+    # Tool Homepage: https://nix-community.github.io/nixago/
+    # This is Standard's devshell integration.
+    # It runs the startup hook when entering the shell.
+    nixago = [
+      # lib.cfg.conform
+      ((lib.dev.mkNixago lib.cfg.conform) {
+        data = { inherit (inputs) cells; };
+      })
+      (lib.dev.mkNixago lib.cfg.treefmt cell.configs.treefmt)
+      (lib.dev.mkNixago lib.cfg.editorconfig cell.configs.editorconfig)
+      (lib.dev.mkNixago lib.cfg.githubsettings cell.configs.githubsettings)
+      (lib.dev.mkNixago lib.cfg.lefthook cell.configs.lefthook)
+    ];
 
-      commands = [ ];
-      # packages = [ nixpkgs.rustEnv ];
-    }
-  );
+    commands = [ ];
+    # packages = [ nixpkgs.rustEnv ];
+  };
 }

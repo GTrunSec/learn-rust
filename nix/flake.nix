@@ -1,5 +1,12 @@
 {
-  inputs.std.url = "github:divnix/std";
+  inputs = {
+    std.url = "github:divnix/std";
+    std.inputs.devshell.follows = "devshell";
+    std.inputs.nixago.follows = "nixago";
+  };
+  inputs.devshell.url = "github:numtide/devshell";
+  inputs.nixago.url = "github:nix-community/nixago";
+  inputs.nixago.inputs.nixpkgs.follows = "nixpkgs";
   inputs.nixpkgs.follows = "std/nixpkgs";
   inputs.nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
   inputs.nixfmt.inputs.nixpkgs.follows = "nixpkgs";

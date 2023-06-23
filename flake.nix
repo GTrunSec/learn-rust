@@ -34,7 +34,7 @@
           inputs.nix-filter.overlays.default
         ];
       in
-      rec {
+      {
         inherit nixpkgs;
         packages = { };
         devShells.default = local.devShells.${system}.default;

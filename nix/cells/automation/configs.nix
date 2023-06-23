@@ -10,12 +10,14 @@
   inputs,
   cell,
 }:
+let
+  inherit (inputs.std) lib;
+in
 {
   # Tool Homepage: https://editorconfig.org/
   editorconfig = {
     data = {
       root = true;
-
       "*" = {
         end_of_line = "lf";
         insert_final_newline = true;
@@ -59,7 +61,7 @@
     devshell.startup.prettier-plugin-toml =
       inputs.nixpkgs.lib.stringsWithDeps.noDepEntry
         ''
-          export NODE_PATH=${inputs.nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules:$NODE_PATH
+          export NODE_PATH=${inputs.nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules:''${NODE_PATH-}
         ''
     ;
     data = {
@@ -67,6 +69,7 @@
         nix = {
           command = "nixfmt";
           includes = [ "*.nix" ];
+          excludes = [ "courses/*" ];
         };
         prettier = {
           command = "prettier";
@@ -88,6 +91,7 @@
             "*.yaml"
             "*.toml"
           ];
+          excludes = [ "courses/*" ];
         };
         shell = {
           command = "shfmt";
@@ -97,16 +101,17 @@
             "-s"
             "-w"
           ];
+          excludes = [ "courses/*" ];
           includes = [ "*.sh" ];
         };
         rustfmt = {
           command = "rustfmt";
-          excludes = [ ];
           includes = [ "*.rs" ];
           options = [
             "--edition"
             "2021"
           ];
+          excludes = [ "courses/*" ];
         };
       };
     };
