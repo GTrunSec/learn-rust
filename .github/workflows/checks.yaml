@@ -12,11 +12,18 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Check Nixpkgs input
+        uses: DeterminateSystems/flake-checker-action@v4
+        with:
+          fail-mode: true
+
       - uses: nixbuild/nix-quick-install-action@v22
         with:
           nix_conf: |
             experimental-features = nix-command flakes
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v1
 
       - name: clippy linting
         run: nix develop ./nix -c lint

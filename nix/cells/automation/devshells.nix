@@ -29,7 +29,9 @@ in
     nixago = [
       # lib.cfg.conform
       ((lib.dev.mkNixago lib.cfg.conform) {
-        data = { inherit (inputs) cells; };
+        data = {
+          inherit (inputs) cells;
+        };
       })
       (lib.dev.mkNixago lib.cfg.treefmt cell.configs.treefmt)
       (lib.dev.mkNixago lib.cfg.editorconfig cell.configs.editorconfig)

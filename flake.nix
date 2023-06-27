@@ -8,8 +8,10 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-    crane.url = "github:nmattia/naersk";
+    crane.url = "github:ipetkov/crane";
     crane.inputs.nixpkgs.follows = "nixpkgs";
+    crane.inputs.flake-compat.follows = "";
+    crane.inputs.rust-overlay.follows = "rust-overlay";
 
     nix-filter.url = "github:/numtide/nix-filter";
     call-flake.url = "github:divnix/call-flake";
