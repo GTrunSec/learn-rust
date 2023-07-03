@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
 
       - name: Check Nixpkgs input
-        uses: DeterminateSystems/flake-checker-action@v4
+        uses: DeterminateSystems/flake-checker-action@v5
         with:
           fail-mode: true
 
