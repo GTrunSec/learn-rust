@@ -2,10 +2,7 @@
 
    They conveniently also generate config files in their startup hook.
 */
-{
-  inputs,
-  cell,
-}:
+{ inputs, cell }:
 let
   inherit (inputs.std) lib;
   inherit (inputs) std;
@@ -33,7 +30,9 @@ in
           inherit (inputs) cells;
         };
       })
-      (lib.dev.mkNixago lib.cfg.treefmt cell.configs.treefmt)
+      (inputs.std-ext.preset.nixago.treefmt
+        inputs.std-ext.preset.configs.treefmt.rust
+      )
       (lib.dev.mkNixago lib.cfg.editorconfig cell.configs.editorconfig)
       (lib.dev.mkNixago lib.cfg.githubsettings cell.configs.githubsettings)
       (lib.dev.mkNixago lib.cfg.lefthook cell.configs.lefthook)

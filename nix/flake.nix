@@ -1,25 +1,18 @@
 {
-  inputs = {
-    std.url = "github:divnix/std";
-    std.inputs.devshell.follows = "devshell";
-    std.inputs.nixago.follows = "nixago";
-  };
-  inputs.devshell.url = "github:numtide/devshell";
-  inputs.nixago.url = "github:nix-community/nixago";
-  inputs.nixago.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nixpkgs.follows = "std/nixpkgs";
+  inputs.std.follows = "std-ext/std";
+  inputs.std-ext.url = "github:gtrunsec/std-ext";
+  inputs.nixpkgs.follows = "std-ext/nixpkgs";
   inputs.nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
   inputs.nixfmt.inputs.nixpkgs.follows = "nixpkgs";
   inputs.call-flake.url = "github:divnix/call-flake";
 
   outputs =
-    {
-      std,
-      ...
-    }@inputs:
+    { std, ... }@inputs:
     std.growOn
       {
-        inputs = inputs // { local = inputs.call-flake ../.; };
+        inputs = inputs // {
+          local = inputs.call-flake ../.;
+        };
         cellsFrom = ./cells;
         cellBlocks = with std.blockTypes; [
           # Development Environments
@@ -32,6 +25,5 @@
           "automation"
           "devshells"
         ];
-      }
-  ;
+      };
 }

@@ -18,11 +18,7 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      systems,
-      ...
-    }:
+    inputs@{ self, systems, ... }:
     let
       local = inputs.call-flake ./nix;
       eachSystem = inputs.nixpkgs.lib.genAttrs (import systems);
@@ -41,7 +37,8 @@
         packages = { };
         devShells.default = local.devShells.${system}.default;
       }
-    )) // {
+    ))
+    // {
       overlays = import ./nix/overlays.nix { inherit inputs; };
       inherit (local) __std;
     }

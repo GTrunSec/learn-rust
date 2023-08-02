@@ -6,10 +6,7 @@
       (2) have all the things in one place / fromat
       (3) potentially share / re-use configuration data - keeping it in sync
 */
-{
-  inputs,
-  cell,
-}:
+{ inputs, cell }:
 let
   inherit (inputs.std) lib;
 in
@@ -62,8 +59,7 @@ in
       inputs.nixpkgs.lib.stringsWithDeps.noDepEntry
         ''
           export NODE_PATH=${inputs.nixpkgs.nodePackages.prettier-plugin-toml}/lib/node_modules:''${NODE_PATH-}
-        ''
-    ;
+        '';
     data = {
       formatter = {
         nix = {

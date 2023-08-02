@@ -13,6 +13,7 @@ target
 rust-30days
 programming-rustv2-book
 
+/courses
 # nixago: ignore-linked-files
 /lefthook.yml
 /.editorconfig

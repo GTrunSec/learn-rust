@@ -1,6 +1,11 @@
 [workspace]
 resolver = "2"
-members = ["srcs/html2md-example", "srcs/cli-test", "srcs/hello_rust"]
+members = [
+  "srcs/html2md-example",
+  "srcs/cli-test",
+  "srcs/hello_rust",
+  "courses/kiskoz-30days/day2",
+]
 
 [workspace.package]
 version = "0.0.0"
