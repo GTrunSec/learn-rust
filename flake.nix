@@ -14,13 +14,11 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-filter.url = "github:/numtide/nix-filter";
-    call-flake.url = "github:divnix/call-flake";
   };
 
   outputs =
     inputs@{ self, systems, ... }:
     let
-      local = inputs.call-flake ./nix;
       eachSystem = inputs.nixpkgs.lib.genAttrs (import systems);
       nixpkgs = eachSystem (
         system:
@@ -33,10 +31,7 @@
     in
     {
       inherit nixpkgs;
-      devShells = eachSystem (
-        system: { default = local.devShells.${system}.default; }
-      );
+      devShells = eachSystem (system: { });
       overlays = import ./nix/overlays.nix { inherit inputs; };
-      inherit (local) __std;
     };
 }

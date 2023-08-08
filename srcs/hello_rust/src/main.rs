@@ -1,4 +1,3 @@
-use std::{iter::Product, marker::StructuralPartialEq};
 fn main() {
 	// let a: () = {};
 	// fn return_tuple() {}
@@ -39,7 +38,7 @@ fn main() {
 		y: i32,
 	}
 
-	let origin: Point = Point { x: 0, y: 0 };
+	let _origin: Point = Point { x: 0, y: 0 };
 
 	// 泛型 (Generics) //
 	struct Foo<T> {

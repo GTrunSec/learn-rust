@@ -2,8 +2,6 @@
   inputs.std.follows = "std-ext/std";
   inputs.std-ext.url = "github:gtrunsec/std-ext";
   inputs.nixpkgs.follows = "std-ext/nixpkgs";
-  inputs.nixfmt.url = "github:serokell/nixfmt/?ref=refs/pull/118/head";
-  inputs.nixfmt.inputs.nixpkgs.follows = "nixpkgs";
   inputs.call-flake.url = "github:divnix/call-flake";
 
   outputs =
