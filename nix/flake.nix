@@ -15,13 +15,13 @@
         cellBlocks = with std.blockTypes; [
           # Development Environments
           (nixago "configs")
-          (devshells "devshells")
+          (devshells "shells")
         ];
       }
       {
         devShells = std.harvest inputs.self [
-          "automation"
-          "devshells"
+          "repo"
+          "shells"
         ];
       };
 }

@@ -52,6 +52,9 @@ fn main() {
 		}
 	}
 
+	// `a_foo` 是一个 `Foo` 类型的结构体
+
 	let a_foo = Foo { bar: 1 };
+
 	println!("{}", a_foo.get_bar()); // 1
 }

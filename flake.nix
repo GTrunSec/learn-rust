@@ -14,6 +14,7 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-filter.url = "github:/numtide/nix-filter";
+    POS.url = "github:GTrunSec/POS";
   };
 
   outputs =
@@ -30,8 +31,17 @@
       );
     in
     {
-      inherit nixpkgs;
-      devShells = eachSystem (system: { });
+      loadDevShell = eachSystem (
+        system: rec {
+          loadInputs =
+            (inputs.POS.lib.loadInputs.setInitInputs (inputs // { inherit nixpkgs; }))
+            .setSystem
+              system;
+          profiles = inputs.POS.lib.evalModules.devshell.loadProfiles.addLoadExtender {
+            inputs = loadInputs.outputs;
+          };
+        }
+      );
       overlays = import ./nix/overlays.nix { inherit inputs; };
     };
 }
