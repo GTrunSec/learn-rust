@@ -3,12 +3,12 @@
     "POP": {
       "inputs": {
         "flake-compat": [
-          "POS",
+          "omnibus",
           "flops"
         ],
         "nixlib": "nixlib",
         "nixpkgs": [
-          "POS",
+          "omnibus",
           "flops"
         ]
       },
@@ -23,34 +23,6 @@
       "original": {
         "owner": "divnix",
         "repo": "POP",
-        "type": "github"
-      }
-    },
-    "POS": {
-      "inputs": {
-        "POP": [
-          "POS",
-          "flops",
-          "POP"
-        ],
-        "flops": "flops",
-        "haumea": [
-          "POS",
-          "flops",
-          "haumea"
-        ]
-      },
-      "locked": {
-        "lastModified": 1695982706,
-        "narHash": "sha256-8b4QHyctotyLnyfL8A0IPX6Ha7li2L90+8vpLuN/vgE=",
-        "owner": "GTrunSec",
-        "repo": "POS",
-        "rev": "727e6e57fd64eda0405882e941837020c418484a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "GTrunSec",
-        "repo": "POS",
         "type": "github"
       }
     },
@@ -79,11 +51,11 @@
         "rust-overlay": []
       },
       "locked": {
-        "lastModified": 1693787605,
-        "narHash": "sha256-rwq5U8dy+a9JFny/73L0SJu1GfWwATMPMTp7D+mjHy8=",
+        "lastModified": 1696266955,
+        "narHash": "sha256-GhaBeBWwejBTzBQl803x7iUXQ6GGUZgBxz+qyk1E3v4=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "8b4f7a4dab2120cf41e7957a28a853f45016bd9d",
+        "rev": "581245bf1233d6f621ce3b6cb99224a948c3a37f",
         "type": "github"
       },
       "original": {
@@ -95,17 +67,17 @@
     "dmerge": {
       "inputs": {
         "haumea": [
-          "POS",
+          "omnibus",
           "flops",
           "haumea"
         ],
         "nixlib": [
-          "POS",
+          "omnibus",
           "flops",
           "nixlib"
         ],
         "yants": [
-          "POS",
+          "omnibus",
           "flops",
           "yants"
         ]
@@ -150,11 +122,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1692799911,
-        "narHash": "sha256-3eihraek4qL744EvQXsK1Ha6C3CR7nnT8X2qWap4RNk=",
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "f9e7cf818399d17d347f847525c5a5a8032e4e44",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
         "type": "github"
       },
       "original": {
@@ -173,11 +145,11 @@
         "yants": "yants"
       },
       "locked": {
-        "lastModified": 1695982510,
-        "narHash": "sha256-QxAilxiCpUWNXo2xR1YircNOQ7h19PtHDKfqMh50rHY=",
+        "lastModified": 1696310372,
+        "narHash": "sha256-YeZY3KN8kwZBLCcxw57WvGaIIFx1QEJUd8LNqk07/Wg=",
         "owner": "gtrunsec",
         "repo": "flops",
-        "rev": "7851bc67518ff258498b346859393c37a4d4126a",
+        "rev": "2785198a21363e3f5ee398fae2f05fbb106e56e9",
         "type": "github"
       },
       "original": {
@@ -189,7 +161,7 @@
     "haumea": {
       "inputs": {
         "nixpkgs": [
-          "POS",
+          "omnibus",
           "flops",
           "nixlib"
         ]
@@ -240,11 +212,11 @@
     },
     "nixlib_2": {
       "locked": {
-        "lastModified": 1689469483,
-        "narHash": "sha256-2SBhY7rZQ/iNCxe04Eqxlz9YK9KgbaTMBssq3/BgdWY=",
+        "lastModified": 1696121361,
+        "narHash": "sha256-sstnEW0Qwqo3MHmy1In/hJHjypfsSDlnhegNKw5eplk=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "02fea408f27186f139153e1ae88f8ab2abd9c22c",
+        "rev": "56992d3dfd3b8cee5c5b5674c1a477446839b6ad",
         "type": "github"
       },
       "original": {
@@ -254,21 +226,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1660438583,
-        "narHash": "sha256-rJUTYxFKlWUJI3njAwEc1pKAVooAViZGJvsgqfh/q/E=",
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "rev": "bbd8f7cd87d0b29294ef3072ffdbd61d60f05da4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs.lib",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1693844670,
         "narHash": "sha256-t69F2nBB8DNQUWHD809oJZJVE+23XBrth4QZuVd6IE0=",
@@ -284,13 +241,56 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1660438583,
+        "narHash": "sha256-rJUTYxFKlWUJI3njAwEc1pKAVooAViZGJvsgqfh/q/E=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "bbd8f7cd87d0b29294ef3072ffdbd61d60f05da4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
+    "omnibus": {
+      "inputs": {
+        "POP": [
+          "omnibus",
+          "flops",
+          "POP"
+        ],
+        "flops": "flops",
+        "haumea": [
+          "omnibus",
+          "flops",
+          "haumea"
+        ]
+      },
+      "locked": {
+        "lastModified": 1696311121,
+        "narHash": "sha256-FipIpJ0dfYg/M2xDYy4bZZT2hu0uM3erp3kB+tm7WRw=",
+        "owner": "GTrunSec",
+        "repo": "omnibus",
+        "rev": "b265677a0ba41c01c3de5f6f279f7b4882066b27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "GTrunSec",
+        "repo": "omnibus",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "POS": "POS",
         "crane": "crane",
         "fenix": "fenix",
         "nix-filter": "nix-filter",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
+        "omnibus": "omnibus",
         "systems": "systems_2"
       }
     },
@@ -343,7 +343,7 @@
     },
     "yants": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1686863218,

@@ -10,7 +10,7 @@ let
   l = nixpkgs.lib // builtins;
 
   devshellProfiles =
-    local.loadDevShell.${nixpkgs.system}.profiles.outputs.default;
+    local.loadDevShell.${nixpkgs.system}.loadProfiles.outputs.default;
 in
 {
   # Tool Homepage: https://numtide.github.io/devshell/
