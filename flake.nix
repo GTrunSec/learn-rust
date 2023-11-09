@@ -18,7 +18,12 @@
   };
 
   outputs =
-    inputs@{ self, systems, ... }:
+    inputs@{
+      self,
+      systems,
+      omnibus,
+      ...
+    }:
     let
       eachSystem = inputs.nixpkgs.lib.genAttrs (import systems);
       nixpkgs = eachSystem (
@@ -29,19 +34,21 @@
           inputs.nix-filter.overlays.default
         ]
       );
+      srcPops = import ./nix/src/__init.nix {
+        inherit
+          nixpkgs
+          eachSystem
+          inputs
+          omnibus
+        ;
+      };
+      src = srcPops.layouts.default;
     in
     {
-      loadDevShell = eachSystem (
-        system: rec {
-          loadInputs =
-            (inputs.omnibus.lib.loadInputs.setInitInputs (inputs // { inherit nixpkgs; }))
-            .setSystem
-              system;
-          loadProfiles =
-            inputs.omnibus.lib.evalModules.devshell.loadProfiles.addLoadExtender
-              { inputs = loadInputs.outputs; };
-        }
-      );
+      inherit src;
+      pops = {
+        inherit (src.pops) devshellProfiles;
+      };
       overlays = import ./nix/overlays.nix { inherit inputs; };
     };
 }
