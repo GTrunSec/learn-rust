@@ -35,7 +35,7 @@ in
         name = "std";
         help = std.packages.std.meta.description;
         command = ''
-          (cd $PRJ_ROOT/nix && ${std.packages.std}/bin/std)
+          (cd $PRJ_ROOT/nix/std && ${std.packages.std}/bin/std)
         '';
       }
     ];
